@@ -1,40 +1,69 @@
-import { Header, NavDropDownButton, Menu, Title, NavMenuButton, PrimaryNav, Search,  } from '@trussworks/react-uswds';
-import { useState } from 'react';
-import '@trussworks/react-uswds/lib/index.css';
+import { useState } from "react";
+import {
+    NavMenuButton,
+    PrimaryNav,
+    Title,
+    Header as USWDSHeader,
+} from "@trussworks/react-uswds";
+
+const primaryLinks = [
+    {
+        name: "Home",
+        href: "/",
+    },
+    {
+        name: "Profile",
+        href: "/profiles",
+    },
+    {
+        name: "Login",
+        href: "/profiles/create",
+    },
+] as const;
 
 function Navbar() {
-    const [expanded, setExpanded] = useState(false);
-    const onClick = (): void => setExpanded(prvExpanded => !prvExpanded);
-    const testMenuItems = [<a href="#linkOne" key="one">
-        Current link
-    </a>, <a href="#linkTwo" key="two">
-        Simple link Two
-    </a>];
-    const [isOpen, setIsOpen] = useState([false, false]);
-    const testItemsMenu = [<>
-        <NavDropDownButton menuId="testDropDownOne" onToggle={(): void => {
-            onToggle(0, setIsOpen);
-        }} isOpen={isOpen[0]} label="Nav Label" isCurrent={true} />
-        <Menu key="one" items={testMenuItems} isOpen={isOpen[0]} id="testDropDownOne" />
-    </>, <a href="#two" key="two" className="usa-nav__link">
-        <span>Parent link</span>
-    </a>, <a href="#three" key="three" className="usa-nav__link">
-        <span>Parent link</span>
-    </a>];
+    const [isMobileNavExpanded, setIsMobileNavExpanded] = useState(false);
+    const handleMobileNavToggle = () => {
+        setIsMobileNavExpanded(!isMobileNavExpanded);
+    };
+    const navItems = primaryLinks.map((link) => (
+        <a href={link.href} key={link.href}>
+            {(link.name)}
+        </a>
+    ));
 
     return (
         <>
-            <Header basic={true} showMobileOverlay={expanded}>
+            <div
+                className={`usa-overlay ${isMobileNavExpanded ? "is-visible" : ""}`}
+            />
+            <USWDSHeader basic={true}>
                 <div className="usa-nav-container">
                     <div className="usa-navbar">
-                        <Title>Project Title</Title>
-                        <NavMenuButton onClick={onClick} label="Menu" />
+                        <Title className="desktop:margin-top-2">
+                            <div className="display-flex flex-align-center">
+                                <span className="margin-right-1">
+                                    <img
+                                        className="width-3 desktop:width-5 text-bottom margin-right-05"
+                                        src={`/images/logos/logo.svg`}
+                                        alt="Site logo"
+                                    />
+                                </span>
+                                <span className="font-sans-lg flex-fill">{("Menu")}</span>
+                            </div>
+                        </Title>
+                        <NavMenuButton
+                            onClick={handleMobileNavToggle}
+                            label={("Menu")}
+                        />
                     </div>
-                    <PrimaryNav items={testItemsMenu} mobileExpanded={expanded} onToggleMobileNav={onClick}>
-                        <Search size="small" onSubmit={() => {}} />
-                    </PrimaryNav>
+                    <PrimaryNav
+                        items={navItems}
+                        mobileExpanded={isMobileNavExpanded}
+                        onToggleMobileNav={handleMobileNavToggle}
+                    ></PrimaryNav>
                 </div>
-            </Header>
+            </USWDSHeader>
         </>
     )
 }

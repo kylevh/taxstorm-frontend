@@ -1,10 +1,10 @@
-import Navbar from "../components/Navbar";
 
 function Home() {
     return (
         <>
-        <Navbar />
-            <h1>Home</h1>
+            <main className="bg-red-700 min-w-screen min-h-screen">
+                hello world
+            </main>
         </>
     )
 }
