@@ -1,13 +1,20 @@
-import { useState } from 'react'
+import { useLocation, Route, Routes } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const location = useLocation();
 
   return (
     <>
-      <div className="bg-red-700">
-        Hello world!
-      </div>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route index element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+        </Routes>
+      </AnimatePresence>
     </>
   )
 }
