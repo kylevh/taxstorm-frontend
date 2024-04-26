@@ -18,6 +18,9 @@ const primaryLinks = [
     {
         name: "Login",
         href: "/profiles/create",
+    },    {
+        name: "Create Submission",
+        href: "/submissions/create",
     },
 ] as const;
 

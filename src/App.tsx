@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import ProfileCreate from "./pages/ProfileCreate";
+import SubmissionsCreate from "./pages/SubmissionsCreate";
+
 
 function App() {
   const location = useLocation();
@@ -21,7 +23,7 @@ function App() {
           <Route path="/profiles/:id/edit" element={<Profile />} />
           <Route path="/dashboard" element={<Profile />} />
           <Route path="/submissions" element={<Profile />} />
-          <Route path="/submissions/create" element={<Profile />} />
+          <Route path="/submissions/create" element={<SubmissionsCreate />} />
           <Route path="/submissions/:id/result" element={<Profile />} />
         </Routes>
       </AnimatePresence>
