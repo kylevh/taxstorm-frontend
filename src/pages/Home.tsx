@@ -29,19 +29,29 @@ function Home() {
     <FooterNav
       aria-label="Footer navigation"
       size="medium"
-      links={Array(5).fill(
+      links={[
         <a href="javascript:void(0)" className="usa-footer__primary-link">
-          Primary link
-        </a>
-      )}
+          Home
+        </a>,
+        <a href="javascript:void(0)" className="usa-footer__primary-link">
+          Dashboard
+        </a>,
+        <a href="javascript:void(0)" className="usa-footer__primary-link">
+          Taxes
+        </a>,
+        <a href="javascript:void(0)" className="usa-footer__primary-link">
+          Settings
+        </a>,
+      ]}
     />
   );
+
   const footerSecondary = (
     <>
       <Grid row gap>
         <Logo
           size="medium"
-          image={<img className="usa-footer__logo-img width:15" src={logo} alt="" />}
+          image={<img className="usa-footer__logo-img" style={{ width: '15%' }} src={logo} alt="TaxStorm Logo" />}
         />
         <Grid
           className="usa-footer__contact-links"
@@ -50,15 +60,15 @@ function Home() {
           }}
         >
           <SocialLinks links={socialLinkItems} />
-          <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
+          <h3 className="usa-footer__contact-heading">TaxStorm Help Center</h3>
           <Address
             size="medium"
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
-                (800) CALL-GOVT
+                (800) CALL-TAX
               </a>,
-              <a key="email" href="mailto:info@agency.gov">
-                info@agency.gov
+              <a key="email" href="mailto:support@taxstorm.com">
+                support@taxstorm.com
               </a>,
             ]}
           />
@@ -66,23 +76,22 @@ function Home() {
       </Grid>
     </>
   );
-  
+
   return (
     <>
       <main id="main-content">
-        <section className="usa-hero" aria-label="Introduction">
+        <section className="usa-hero " style={{ backgroundImage: 'url("/images/taxes.jpg")' }} aria-label="Introduction">
           <GridContainer>
             <div className="usa-hero__callout">
               <h1 className="usa-hero__heading">
-                <span className="usa-hero__heading--alt">Hero callout:</span>
-                Bring attention to a project priority
+                <span className="usa-hero__heading--alt">TaxStorm</span>
+                Do your taxes with ease
               </h1>
               <p>
-                Support the callout with some short explanatory text. You don’t
-                need more than a couple of sentences.
+                Experience the ease of managing your taxes with TaxStorm. Fast, accurate, and secure tax filing at your fingertips.
               </p>
-              <a className="usa-button" href="javascript:void(0)">
-                Call to action
+              <a className="usa-button margin-top-2" href="javascript:void(0)">
+                Start Your Stress-Free Tax Journey Now!
               </a>
             </div>
           </GridContainer>
@@ -96,7 +105,7 @@ function Home() {
               }}
             >
               <h2 className="font-heading-xl margin-top-0 tablet:margin-bottom-0">
-                A tagline highlights your approach
+                Doing your taxes have never been easier
               </h2>
             </Grid>
             <Grid
@@ -106,16 +115,10 @@ function Home() {
               className="usa-prose"
             >
               <p>
-                The tagline should inspire confidence and interest, focusing on
-                the value that your overall approach offers to your audience.
-                Use a heading typeface and keep your tagline to just a few
-                words, and don’t confuse or mystify.
+                Our advanced tools guide you through every step of the tax filing process, ensuring you maximize your deductions and credits. Begin your hassle-free tax journey with us today!
               </p>
               <p>
-                Use the right side of the grid to explain the tagline a bit
-                more. What are your goals? How do you do your work? Write in the
-                present tense, and stay brief here. People who are interested
-                can find details on internal pages.
+                Create an account or contact us at (800) CALL-TAX to get started.
               </p>
             </Grid>
           </Grid>
@@ -137,12 +140,10 @@ function Home() {
                 />
                 <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
-                    Graphic headings can vary.
+                    Efficient Tax Filing
                   </h2>
                   <p>
-                    Graphic headings can be used a few different ways, depending
-                    on what your landing page is for. Highlight your values,
-                    specific program areas, or results.
+                    Utilize our streamlined process to file your taxes quickly and without errors.
                   </p>
                 </MediaBlockBody>
               </Grid>
@@ -159,12 +160,10 @@ function Home() {
                 />
                 <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
-                    Stick to 6 or fewer words.
+                    Maximize Deductions
                   </h2>
                   <p>
-                    Keep body text to about 30 words. They can be shorter, but
-                    try to be somewhat balanced across all four. It creates a
-                    clean appearance with good spacing.
+                    Ensure you get the maximum possible deductions with our expert-driven guidance.
                   </p>
                 </MediaBlockBody>
               </Grid>
@@ -183,12 +182,10 @@ function Home() {
                 />
                 <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
-                    Never highlight anything without a goal.
+                    24/7 Support
                   </h2>
                   <p>
-                    For anything you want to highlight here, understand what
-                    your users know now, and what activity or impression you
-                    want from them after they see it.
+                    Our tax experts are available around the clock to help you with any questions or issues.
                   </p>
                 </MediaBlockBody>
               </Grid>
@@ -205,12 +202,10 @@ function Home() {
                 />
                 <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
-                    Could also have 2 or 6.
+                    Secure and Private
                   </h2>
                   <p>
-                    In addition to your goal, find out your users’ goals. What
-                    do they want to know or do that supports your mission? Use
-                    these headings to show these.
+                    Your data is protected with top-notch security measures, ensuring your privacy.
                   </p>
                 </MediaBlockBody>
               </Grid>
@@ -220,16 +215,12 @@ function Home() {
 
         <section id="test-section-id" className="usa-section">
           <GridContainer>
-            <h2 className="font-heading-xl margin-y-0">Section heading</h2>
-            <p className="usa-intro">
-              Everything up to this point should help people understand your
-              agency or project: who you are, your goal or mission, and how you
-              approach it. Use this section to encourage them to act. Describe
-              why they should get in touch here, and use an active verb on the
-              button below. “Get in touch,” “Learn more,” and so on.
+            <h2 className="font-heading-xl margin-y-0 text-bold text-xl pb-4">Ready to File Your Taxes?</h2>
+            <p className="usa-intro pb-4">
+            Join thousands of satisfied customers who have experienced the ease and security of filing their taxes with TaxStorm. Get started today and feel the difference.
             </p>
             <a href="#" className="usa-button usa-button--big">
-              Call to action
+            File with TaxStorm Now
             </a>
           </GridContainer>
         </section>

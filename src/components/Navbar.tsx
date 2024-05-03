@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  Button,
     GovBanner,
   Link,
   NavMenuButton,
@@ -12,11 +13,7 @@ const primaryLinks = [
   {
     name: "Sign In",
     href: "/login",
-  },
-  {
-    name: "Get Started",
-    href: "/profiles/create",
-  },
+  }
 ] as const;
 
 function Navbar() {
@@ -38,9 +35,9 @@ function Navbar() {
         className={`usa-overlay ${isMobileNavExpanded ? "is-visible" : ""}`}
       />
       <USWDSHeader basic={true}>
-        <div className="usa-nav-container">
+        <div className="usa-nav-container desktop:margin-bottom-1">
           <div className="usa-navbar">
-            <Title className="desktop:margin-top-2">
+            <Title className="desktop:margin-top-2 ">
               <div className="display-flex flex-align-center">
                 <span className="margin-right-1">
                   <Link href="/">
@@ -59,7 +56,10 @@ function Navbar() {
             items={navItems}
             mobileExpanded={isMobileNavExpanded}
             onToggleMobileNav={handleMobileNavToggle}
-          ></PrimaryNav>
+          >
+            <Link href="/profiles/create"><Button className="margin-left-1" accentStyle="warm" type="button">Get Started</Button></Link>
+          </PrimaryNav>
+
         </div>
       </USWDSHeader>
     </>

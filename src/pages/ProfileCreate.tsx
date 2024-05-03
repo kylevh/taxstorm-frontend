@@ -92,38 +92,25 @@ export default function ProfileCreate() {
                                 col: 6
                             }} className="padding-x-205">
                                 <div className="border-top border-base-lighter padding-top-4 desktop:border-0 desktop:padding-top-0">
-                                    <h2 className="display-none desktop:display-block">
-                                        A tagline that explains the benefit of creating an account.
+                                    <h2 className="display-none desktop:display-block text-bold text-xl">
+                                        Create an account and start doing your taxes with ease!
                                     </h2>
 
                                     <div className="usa-prose">
                                         <p>
-                                            Here is a space for a longer description to introduce 3-5
-                                            easily scannable bullet points. Note that on mobile, this
-                                            text block will bump below the Create Account form.
+                                            We make it easy for you to do your taxes by 
+                                            streamlining the flow of your taxes with an intuitive
+                                            system to calculate what you owe.
                                         </p>
-                                        <section className="usa-graphic-list">
-                                            <div className="usa-graphic-list__row">
-                                                {Array.from(Array(3), (_, idx) => <div className="usa-media-block margin-y-2" key={idx}>
-                                                    <img className="usa-media-block__img height-7 width-7" src={'/images/logos/logo.svg'} alt="Alt text" />
-                                                    <MediaBlockBody>
-                                                        <p>
-                                                            <strong>Value proposition {idx + 1}:</strong>{' '}
-                                                            Vivamus nec velit sed leo scelerisque laoreet
-                                                            vestibulum.
-                                                        </p>
-                                                    </MediaBlockBody>
-                                                </div>)}
-                                            </div>
-                                        </section>
+    
                                     </div>
 
                                     <div className="border-top border-base-lighter margin-top-3 padding-top-1">
-                                        <h2 className="pt-2">Want to sign in with Google?</h2>
+                                        <h2 className="pt-2">Want to sign in?</h2>
                                         <div className="usa-prose pt-2">
                                             <p>
                                                 <Button type="button" outline={true}>
-                                                    Google Sign In
+                                                    Go to Sign In
                                                 </Button>
                                             </p>
                                         </div>
