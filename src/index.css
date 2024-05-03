@@ -16,3 +16,71 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
+.profile-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.profile-container h1 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+}
+
+.profile-container div, .profile-container form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.profile-container label {
+  margin-bottom: 10px;
+  color: #666;
+  font-weight: bold;
+}
+
+.profile-container input,
+.profile-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.profile-container button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.profile-container button:hover {
+  background-color: #0056b3;
+}
+
+.profile-container p {
+  line-height: 1.6;
+  color: #333;
+}
+
+.profile-container p strong {
+  color: #000;
+  font-weight: bold;
+}
+
+.usa-language-container {
+  margin-bottom: 0px !important;
+}
+
+.usa-nav-container {
+  margin-bottom: 0  !important;
+}

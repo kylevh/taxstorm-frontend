@@ -25,25 +25,22 @@ export default function SubmissionsView() {
 
             <main id="main-content" className="container mx-auto px-4">
                 <div className="text-center mb-4">
-                    <Link href='submissions/create'><Button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-6 px-4 rounded">
+                    <Link href='submissions/create'><Button type="button" size="big" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-6 my-6 mt-10 px-4 rounded">
                         Create New Submission
                     </Button></Link>
 
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {submissions.map(submission => (
-                        <div key={submission.id} className="border border-gray-100 p-4 rounded-lg shadow">
-                            <h2 className="text-xl font-semibold">Year: {submission.year}</h2>
-                            <p>Status: <span className={`font-semibold ${submission.status === 'Completed' ? 'text-green-500' : 'text-yellow-500'}`}>{submission.status}</span></p>
-                            <p>Amount Owed: {submission.amountOwed}</p>
-                            <p>Income: {submission.income}</p>
+                        <div key={submission.id} className="bg-white border border-green-200 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <h2 className="text-3xl font-semibold mb-2">{submission.year} Tax Results</h2>
+                            <p className=" text-xl">Status: <span className={`font-semibold ${submission.status === 'Completed' ? 'text-green-500' : 'text-yellow-500'}`}>{submission.status}</span></p>
                             <Link href={`/submissions/result`}>
-                                <Button type="button" className="mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    View Details
+                                <Button type="button" className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold mt-4  py-2 px-4 rounded">
+                                    View Results
                                 </Button>
                             </Link>
-
                         </div>
                     ))}
                 </div>

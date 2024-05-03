@@ -10,6 +10,10 @@ import {
   SocialLinks,
 } from "@trussworks/react-uswds";
 import circleImg from "/images/logos/circleImg.png";
+import img1 from "/images/icons/group1.png";
+import img2 from "/images/icons/group2.png";
+import img3 from "/images/icons/group3.png";
+import img4 from "/images/icons/group4.png";
 import logo from "/images/logos/TaxStorm.svg";
 
 function Home() {
@@ -135,7 +139,7 @@ function Home() {
               >
                 <img
                   className="usa-media-block__img"
-                  src={circleImg}
+                  src={img1}
                   alt="Alt text"
                 />
                 <MediaBlockBody>
@@ -155,7 +159,7 @@ function Home() {
               >
                 <img
                   className="usa-media-block__img"
-                  src={circleImg}
+                  src={img2}
                   alt="Alt text"
                 />
                 <MediaBlockBody>
@@ -177,7 +181,7 @@ function Home() {
               >
                 <img
                   className="usa-media-block__img"
-                  src={circleImg}
+                  src={img3}
                   alt="Alt text"
                 />
                 <MediaBlockBody>
@@ -197,7 +201,7 @@ function Home() {
               >
                 <img
                   className="usa-media-block__img"
-                  src={circleImg}
+                  src={img4}
                   alt="Alt text"
                 />
                 <MediaBlockBody>

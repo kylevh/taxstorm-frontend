@@ -1,14 +1,20 @@
 import { Button, Fieldset, Footer, Form, Grid, GridContainer, Header, Label, Link, TextInput, Title } from "@trussworks/react-uswds";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {  useDispatch } from 'react-redux'
+import { login } from '../features/user'
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch()
 
     const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        navigate('/submissions')
+        dispatch(login())
+        setTimeout(() => {
+            navigate('/submissions'); // Navigate after a delay
+          }, 1000); // Delay in milliseconds
     }
 
     return (
