@@ -98,13 +98,13 @@ function Navbar() {
                 {
                   attr: 'en',
                   label: 'English',
-                  on_click: function Ga() { }
+                  on_click:  () => { handleLanguageChange('es'); function Ga() {}}
                 },
                 {
                   attr: 'es',
                   label: 'Español',
                   label_local: 'Spanish',
-                  on_click: function Ga() { }
+                  on_click:  () => { handleLanguageChange('en'); function Ga() {}}
                 },
 
               ]}

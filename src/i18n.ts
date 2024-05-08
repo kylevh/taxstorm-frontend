@@ -7,10 +7,10 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      "Get Started": "Get Started ENGLISH",
-      "Sign In": "SIGN IN ENGLISH",
+      "Get Started": "Get Started",
+      "Sign In": "Sign In",
       "Log out": "Log out",
-      "Submissions": "Submissions ENGLISH",
+      "Submissions": "Submissions",
       "Results": "Results",
       "View Profile": "View Profile"
     }

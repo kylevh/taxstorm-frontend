@@ -2,7 +2,7 @@ import { Button, Header, Link, Title } from "@trussworks/react-uswds";
 
 export default function SubmissionsView() {
     const submissions = [
-        { id: 1, year: 2024, status: 'Pending', amountOwed: '$150', income: '$75,324' },
+        { id: 1, year: 2024, status: 'Completed', amountOwed: '$150', income: '$75,324' },
         { id: 2, year: 2023, status: 'Completed', amountOwed: '$435', income: '$54,326' },
         { id: 3, year: 2022, status: 'Completed', amountOwed: '$745', income: '$57,945' },
         { id: 4, year: 2021, status: 'Completed', amountOwed: '$789', income: '$67,443' },

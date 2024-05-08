@@ -17,12 +17,16 @@ export default function Results() {
                                 <p className="flex items-center text-2xl pb-2">Total Income:{' '}<strong>$50,000</strong></p>
                                 <p className="flex items-center text-2xl pb-2">Total Deductions: <strong>$5,000</strong></p>
                                 <p className="flex items-center text-2xl  pb-2"> Taxable Income: <strong>$45,000</strong></p>
-                                <p className="flex items-center text-success text-2xl text-bold "> Total Tax Owed: <strong>$6,750</strong></p>
+                                <div className="justify-center items-center flex flex-col pt-4">
+                                    <p className="flex items-center  text-2xl text-bold "> Total Tax Owed: </p>
+                                    <strong className="text-2xl text-success">$6,750</strong>
+
+                                </div>
                             </Grid>
                         </Grid>
                     </CardBody>
                     <CardFooter>
-                        <Link href={'/submissions'}  allowSpacebarActivation className="usa-button ">
+                        <Link href={'/submissions'} allowSpacebarActivation className="usa-button ">
                             View All Submissions
                         </Link>
                     </CardFooter>
