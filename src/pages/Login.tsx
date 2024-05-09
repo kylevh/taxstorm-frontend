@@ -9,12 +9,21 @@ export default function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
 
-    const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        dispatch(login())
-        setTimeout(() => {
-            navigate('/submissions'); // Navigate after a delay
-          }, 1000); // Delay in milliseconds
+    const submitForm = async(e: React.FormEvent<HTMLFormElement>) => {
+        // const response = await fetch('http://localhost:8080/taxstorm/users', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({ token: data.token })
+        // });
+ 
+        // if (response.ok) {
+        //     const data = await response.json();
+        //     dispatch(login({ token: data.token }));
+        // } else {
+        //     // Handle errors
+        // }
     }
 
     return (
