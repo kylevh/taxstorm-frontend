@@ -47,9 +47,10 @@ export default function ProfileCreate() {
       console.log("User created:", data);
 
       // Dispatch login action with the token
-      dispatch(login({ token: data.token }));
+      dispatch(login({ token: data.token, userData: data }));
 
       navigate("/"); // Redirect to homepage on success
+      window.location.reload();
     } catch (error) {
       console.error("Failed to create user:", error);
       setErrorMessage("Failed to create account. Please try again."); // Set error message on failure

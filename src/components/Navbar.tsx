@@ -36,9 +36,10 @@ function Navbar() {
     i18n.changeLanguage(languageCode);
   };
 
-  const handleLogout = () => {
-    navigate('/');
+  const handleLogout = async () => {
+    await navigate('/');
     dispatch(logout());
+    window.location.reload();
   };
 
   const navItems = isLoggedIn ? [

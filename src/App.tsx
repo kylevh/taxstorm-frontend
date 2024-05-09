@@ -9,7 +9,16 @@ import ProfileCreate from "./pages/ProfileCreate";
 import SubmissionsCreate from "./pages/SubmissionsCreate";
 import SubmissionsView from "./pages/SubmissionsView";
 import Results from "./pages/Results";
+import { Navigate } from "react-router-dom";
+import { useAppSelector } from './store/hooks';
 
+function ProtectedRoute({ children }: { children: JSX.Element }) {
+  const isLoggedIn = useAppSelector(state => state.loggedIn.loggedIn);
+  if (!isLoggedIn) {
+      return <Navigate to="/login" replace />;
+  }
+  return children;
+}
 
 function App() {
   const location = useLocation();
@@ -22,14 +31,14 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profiles/create" element={<ProfileCreate />} />
-          <Route path="/profiles/:id" element={<Profile />} />
-          <Route path="/profiles/:id/edit" element={<Profile />} />
-          <Route path="/dashboard" element={<Profile />} />
-          <Route path="/submissions" element={<SubmissionsView />} />
-          <Route path="/submissions/create" element={<SubmissionsCreate />} />
-          <Route path="/submissions/:id/result" element={<Profile />} />
+          <Route path="/profiles/:id" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/profiles/:id/edit" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/dashboard" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/submissions" element={<ProtectedRoute><SubmissionsView /></ProtectedRoute>} />
+          <Route path="/submissions/create" element={<ProtectedRoute><SubmissionsCreate /></ProtectedRoute>} />
+          <Route path="/submissions/:id/result" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 
-          <Route path="/submissions/result" element={<Results />} />
+          <Route path="/submissions/result" element={<ProtectedRoute><Results /></ProtectedRoute>} />
         </Routes>
       </AnimatePresence>
     </>

@@ -1,6 +1,9 @@
 import { Button, Header, Link, Title } from "@trussworks/react-uswds";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function SubmissionsView() {
+    const [taxForms, setTaxForms] = useState([]);
     const submissions = [
         { id: 1, year: 2024, status: 'Completed', amountOwed: '$150', income: '$75,324' },
         { id: 2, year: 2023, status: 'Completed', amountOwed: '$435', income: '$54,326' },
@@ -17,7 +20,7 @@ export default function SubmissionsView() {
                 <div className="usa-navbar">
                     <Title id="extended-logo">
                         <a href="/" title="Home" aria-label="Home">
-                            Submissions
+                            Tax Forms
                         </a>
                     </Title>
                 </div>
@@ -26,7 +29,7 @@ export default function SubmissionsView() {
             <main id="main-content" className="container mx-auto px-4">
                 <div className="text-center mb-4">
                     <Link href='submissions/create'><Button type="button" size="big" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-6 my-6 mt-10 px-4 rounded">
-                        Create New Submission
+                        Create New Tax Form
                     </Button></Link>
 
                 </div>
@@ -34,7 +37,7 @@ export default function SubmissionsView() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {submissions.map(submission => (
                         <div key={submission.id} className="bg-white border border-green-200 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <h2 className="text-3xl font-semibold mb-2">{submission.year} Tax Results</h2>
+                            <h2 className="text-3xl font-semibold mb-2">{submission.year} Tax Form Results</h2>
                             <p className=" text-xl">Status: <span className={`font-semibold ${submission.status === 'Completed' ? 'text-green-500' : 'text-yellow-500'}`}>{submission.status}</span></p>
                             <Link href={`/submissions/result`}>
                                 <Button type="button" className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold mt-4  py-2 px-4 rounded">
