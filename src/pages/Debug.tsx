@@ -8,7 +8,7 @@ export default function Debug() {
     const token = useAppSelector((state: any) => state.user.token);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/taxstorm/users/${userId}`, { headers: { Authorization: `Basic ${token}` } })
+        axios.get(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/users/${userId}`, { headers: { Authorization: `Basic ${token}` } })
             .then(response => {
                 setUserData(response.data);
                 console.log(response.data);

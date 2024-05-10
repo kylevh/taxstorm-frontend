@@ -46,7 +46,7 @@ export default function SubmissionsCreate() {
     useEffect(() => {
         const fetchCredits = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/taxstorm/credits', { headers: { Authorization: `Basic ${token}` } });
+                const response = await axios.get('http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/credits', { headers: { Authorization: `Basic ${token}` } });
                 setCredits(response.data.map((credit: CreditWithCount) => ({ ...credit, count: 0 })));
             } catch (error) {
                 console.error('Failed to fetch credits', error);
@@ -55,7 +55,7 @@ export default function SubmissionsCreate() {
 
         const fetchDeductions = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/taxstorm/deductions', { headers: { Authorization: `Basic ${token}` } });
+                const response = await axios.get('http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/deductions', { headers: { Authorization: `Basic ${token}` } });
                 setDeductions(response.data.map((deduction: Deduction) => ({ ...deduction })));
             } catch (error) {
                 console.error('Failed to fetch deductions', error);
@@ -150,7 +150,7 @@ export default function SubmissionsCreate() {
 
         try {
             console.log(personalInfoData);
-            const response = await axios.put(`http://localhost:8080/taxstorm/users/${userId}`, personalInfoData, {
+            const response = await axios.put(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/users/${userId}`, personalInfoData, {
                 headers: {
                     Authorization: `Basic ${token}`
                 }
@@ -159,7 +159,8 @@ export default function SubmissionsCreate() {
         } catch (error) {
             console.error('Error submitting personal information', error);
             setError('Failed to submit personal information. Please try again.');
-        }
+            return;
+                }
 
         // Submit all the W2s created in form
         for (const w2 of formData.w2Info) {
@@ -174,7 +175,7 @@ export default function SubmissionsCreate() {
             };
 
             try {
-                const response = await axios.post('http://localhost:8080/taxstorm/w2s', w2Data, {
+                const response = await axios.post('http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/w2s', w2Data, {
                     headers: {
                         Authorization: `Basic ${token}`
                     },
@@ -184,6 +185,7 @@ export default function SubmissionsCreate() {
             } catch (error) {
                 console.log(w2Data);
                 console.error('Error submitting W2', error);
+                return;
             }
         }
 
@@ -202,7 +204,7 @@ export default function SubmissionsCreate() {
             }
 
             try {
-                const response = await axios.post(`http://localhost:8080/taxstorm/users/${userId}/deductions`, deductionData, {
+                const response = await axios.post(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/users/${userId}/deductions`, deductionData, {
                     headers: {
                         Authorization: `Basic ${token}`
                     },
@@ -212,6 +214,7 @@ export default function SubmissionsCreate() {
             } catch (error) {
                 console.log(deductionData);
                 console.error('Error submitting deduction', error);
+                return;
             }
         }
 
@@ -232,7 +235,7 @@ export default function SubmissionsCreate() {
 
 
             try {
-                const response = await axios.post(`http://localhost:8080/taxstorm/users/${userId}/credits`, creditData, {
+                const response = await axios.post(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/users/${userId}/credits`, creditData, {
                     headers: {
                         Authorization: `Basic ${token}`
                     },
@@ -242,12 +245,13 @@ export default function SubmissionsCreate() {
             } catch (error) {
                 console.log(creditData);
                 console.error('Error submitting credit', error);
+                return;
             }
         }
 
         // Generate/populate tax form {year}
         try {
-            const response = await axios.get(`http://localhost:8080/taxstorm/taxforms/${userId}/${year}`, {
+            const response = await axios.get(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/taxforms/${userId}/${year}`, {
                 headers: {
                     Authorization: `Basic ${token}`
                 },
@@ -260,7 +264,7 @@ export default function SubmissionsCreate() {
 
         // Submit tax form {year}
         try {
-            const response = await axios.post(`http://localhost:8080/taxstorm/taxforms/${userId}/${year}`, {}, {
+            const response = await axios.post(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/taxforms/${userId}/${year}`, {}, {
                 headers: {
                     Authorization: `Basic ${token}`
                 },
@@ -272,6 +276,7 @@ export default function SubmissionsCreate() {
 
         } catch (error) {
             console.error('Error submitting tax form', error);
+            return;
         }
 
         navigate(`/submissions`);
@@ -304,7 +309,6 @@ export default function SubmissionsCreate() {
             ...prev,
             [field]: value
         }));
-        console.log(addressComponent)
     };
 
     return (
@@ -584,13 +588,13 @@ export default function SubmissionsCreate() {
                                     {currentStep === 4 && (
                                         <div>
                                             <h1 className="text-bold text-3xl">Review and Submit</h1>
-                                            <div className="review-section">
+                                            <div className="review-section margin-bottom-2">
                                                 <h2 className="text-2xl py-2">Personal Information</h2>
                                                 {formData.personalInfo.firstName || formData.personalInfo.lastName || formData.personalInfo.ssn || formData.personalInfo.phoneNumber || formData.personalInfo.addressComponent.streetAddress ? (
                                                     <>
                                                         <p><strong>Full Name:</strong> {formData.personalInfo.firstName} {formData.personalInfo.lastName}</p>
                                                         <p><strong>SSN:</strong> {formData.personalInfo.ssn}</p>
-                                                        <p><strong>Address:</strong> {formData.personalInfo.addressComponent.streetAddress}, {formData.personalInfo.addressComponent.city}, {formData.personalInfo.addressComponent.state} {formData.personalInfo.addressComponent.zip}</p>
+                                                        <p><strong>Address:</strong> {addressComponent.streetAddress}, {addressComponent.city}, {addressComponent.state} {addressComponent.zip}</p>
                                                         <p><strong>Phone Number:</strong> {formData.personalInfo.phoneNumber}</p>
                                                     </>
                                                 ) : (
@@ -601,7 +605,7 @@ export default function SubmissionsCreate() {
                                                 {formData.w2Info.length > 0 ? (
                                                     formData.w2Info.map((w2, index) => (
                                                         <div key={index}>
-                                                            <p><strong>Employer Name {index + 1}:</strong> {w2.employerName}</p>
+                                                            <p className="margin-top-1"><strong>Employer Name {index + 1}:</strong> {w2.employerName}</p>
                                                             <p><strong>Wages:</strong> {w2.wages}</p>
                                                             <p><strong>Federal Tax Withheld:</strong> {w2.federalTaxWithheld}</p>
                                                             <p><strong>Social Security Wages:</strong> {w2.socialSecurityWages}</p>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { login } from '../features/user'
+import axios from 'axios'
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -20,20 +21,20 @@ export default function Login() {
 
     const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8080/taxstorm/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password })
-        });
-        if (response.ok) {
-            const base64Token = btoa(`${email}:${password}`);
-            const data = await response.json();
-            dispatch(login({ token: base64Token, userData: data })); // Dispatch user data along with token
-            navigate('/'); // Redirect to home or dashboard as needed
-            window.location.reload();
-        } else {
+        try {
+            const response = await axios.post('http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/users/login', {
+                email, password
+            });
+            if (response.status === 200) {
+                const base64Token = btoa(`${email}:${password}`);
+                const data = response.data;
+                dispatch(login({ token: base64Token, userData: data }));
+                navigate('/');
+                window.location.reload();
+            } else {
+                setLoginError(true);
+            }
+        } catch (error) {
             setLoginError(true);
         }
     }

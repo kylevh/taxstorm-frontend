@@ -36,7 +36,7 @@ function Profile() {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/taxstorm/users/${userId}`, { headers: { Authorization: `Basic ${token}` } });
+                const response = await axios.get(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/users/${userId}`, { headers: { Authorization: `Basic ${token}` } });
                 setProfile(
                     { ...response.data, userId: userId }
                 );
@@ -64,7 +64,7 @@ function Profile() {
             ssn: ssn
         };
         try {
-            const response = await axios.put(`http://localhost:8080/taxstorm/users/${userId}`, updatedUserData, {
+            const response = await axios.put(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/users/${userId}`, updatedUserData, {
                 headers: { Authorization: `Basic ${token}` }
             });
             console.log('User updated successfully', response.data);

@@ -30,7 +30,7 @@ export default function Admin() {
     useEffect(() => {
         const fetchCredits = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/taxstorm/credits', { headers: { Authorization: `Basic ${token}` } });
+                const response = await axios.get(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/credits`, { headers: { Authorization: `Basic ${token}` } });
                 setCredits(response.data);
             } catch (error) {
                 console.error('Failed to fetch credits', error);
@@ -39,7 +39,7 @@ export default function Admin() {
 
         const fetchDeductions = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/taxstorm/deductions', { headers: { Authorization: `Basic ${token}` } });
+                const response = await axios.get('http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/deductions', { headers: { Authorization: `Basic ${token}` } });
                 setDeductions(response.data);
             } catch (error) {
                 console.error('Failed to fetch deductions', error);
@@ -62,7 +62,7 @@ export default function Admin() {
 
     const handleAddCredit = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/taxstorm/credits', newCreditData, {
+            const response = await axios.post('http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/credits', newCreditData, {
                 headers: { Authorization: `Basic ${token}` }
             });
             setCredits([...credits, response.data]);
@@ -74,7 +74,7 @@ export default function Admin() {
 
     const deleteCredit = async (creditId: number) => {
         try {
-            await axios.delete(`http://localhost:8080/taxstorm/credits/${creditId}`, {
+            await axios.delete(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/credits/${creditId}`, {
                 headers: { Authorization: `Basic ${token}` }
             });
             const updatedCredits = credits.filter(credit => credit.id !== creditId);
@@ -86,7 +86,7 @@ export default function Admin() {
 
     const handleSaveClick = async () => {
         try {
-            const response = await axios.put(`http://localhost:8080/taxstorm/credits/${editingCreditId}`, editCreditFormData, {
+            const response = await axios.put(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/credits/${editingCreditId}`, editCreditFormData, {
                 headers: { Authorization: `Basic ${token}` }
             });
             const updatedCredits = credits.map(credit => credit.id === editingCreditId ? response.data : credit);
@@ -110,7 +110,7 @@ export default function Admin() {
 
     const handleSaveDeductionClick = async (deductionId: number) => {
         try {
-            const response = await axios.put(`http://localhost:8080/taxstorm/deductions/${deductionId}`, editDeductionFormData, {
+            const response = await axios.put(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/deductions/${deductionId}`, editDeductionFormData, {
                 headers: { Authorization: `Basic ${token}` }
             });
             const updatedDeductions = deductions.map(deduction => deduction.id === deductionId ? response.data : deduction);
@@ -124,7 +124,7 @@ export default function Admin() {
 
     const deleteDeduction = async (deductionId: number) => {
         try {
-            await axios.delete(`http://localhost:8080/taxstorm/deductions/${deductionId}`, {
+            await axios.delete(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/deductions/${deductionId}`, {
                 headers: { Authorization: `Basic ${token}` }
             });
             const updatedDeductions = deductions.filter(deduction => deduction.id !== deductionId);
@@ -136,7 +136,7 @@ export default function Admin() {
 
     const handleAddDeduction = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/taxstorm/deductions', newDeductionData, {
+            const response = await axios.post('http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/deductions', newDeductionData, {
                 headers: { Authorization: `Basic ${token}` }
             });
             setDeductions([...deductions, response.data]);

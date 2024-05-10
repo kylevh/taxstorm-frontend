@@ -32,7 +32,7 @@ export default function ProfileCreate() {
         };
 
         try {
-            const response = await fetch("http://localhost:8080/taxstorm/users", {
+            const response = await fetch("http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -11,7 +11,7 @@ export default function SubmissionsView() {
     useEffect(() => {
         const fetchTaxForms = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/taxstorm/taxforms?userId=${userId}`, {
+                const response = await axios.get(`http://ec2-54-88-54-136.compute-1.amazonaws.com:8080/taxstorm/taxforms?userId=${userId}`, {
                     headers: {
                         Authorization: `Basic ${token}`
                     }
