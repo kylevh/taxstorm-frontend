@@ -1,5 +1,5 @@
 import { Button, Header, Link, Title } from "@trussworks/react-uswds";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppSelector } from '../store/hooks';
 import { TaxForm } from '../features/user';
 import axios from 'axios';

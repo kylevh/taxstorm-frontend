@@ -105,13 +105,13 @@ function Navbar() {
                 {
                   attr: 'en',
                   label: 'English',
-                  on_click:  () => { handleLanguageChange('es'); function Ga() {}}
+                  on_click:  () => { handleLanguageChange('es'); }
                 },
                 {
                   attr: 'es',
                   label: 'Español',
                   label_local: 'Spanish',
-                  on_click:  () => { handleLanguageChange('en'); function Ga() {}}
+                  on_click:  () => { handleLanguageChange('en');}
                 },
 
               ]}

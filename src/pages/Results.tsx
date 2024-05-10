@@ -1,6 +1,4 @@
-import React from 'react';
-import { Button, Grid, GridContainer, Link, Card, CardHeader, CardBody, CardGroup, CardFooter } from "@trussworks/react-uswds";
-import { FaDollarSign } from 'react-icons/fa';
+import { Grid, GridContainer, Link, Card, CardHeader, CardBody, CardGroup, CardFooter } from "@trussworks/react-uswds";
 
 export default function Results() {
     return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useAppSelector } from '../store/hooks';
 import axios from 'axios';
 
@@ -6,7 +6,6 @@ export default function Debug() {
     const [userData, setUserData] = useState(null);
     const userId = useAppSelector((state: any) => state.user.userData.id); // Use the selector
     const token = useAppSelector((state: any) => state.user.token);
-    const [deductions, setDeductions] = useState<any[]>([]);
 
     useEffect(() => {
         axios.get(`http://localhost:8080/taxstorm/users/${userId}`, { headers: { Authorization: `Basic ${token}` } })

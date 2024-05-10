@@ -10,23 +10,6 @@ interface UserData {
     role?: string;
 }
 
-interface UserState {
-    loggedIn: boolean,
-    token: string | null;
-    userData: UserData | null;
-}
-
-interface W2 {
-    id: number;
-    employer: string;
-    year: number;
-    wages: number;
-    federalTaxesWithheld: number;
-    socialSecurityTaxesWithheld: number;
-    medicareTaxesWithheld: number;
-    userId: number;
-    imageKey: string | null;
-}
 
 export interface TaxForm {
     id: number;

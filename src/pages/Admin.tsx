@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Button, Grid, GridContainer, Alert } from "@trussworks/react-uswds";
+import { useState, useEffect } from 'react';
+import { Table, Button, Grid, GridContainer } from "@trussworks/react-uswds";
 import { useAppSelector } from '../store/hooks';
 import axios from 'axios'
 
@@ -25,8 +25,6 @@ export default function Admin() {
     const [editDeductionFormData, setEditDeductionFormData] = useState<Deduction | null>(null);
     const [newDeductionData, setNewDeductionData] = useState({ name: '', rate: 0 });
 
-    const userId = useAppSelector((state: any) => state.user.userData.id); // Use the selector
-    const userData = useAppSelector((state: any) => state.user.userData); // Use the selector
     const token = useAppSelector((state: any) => state.user.token);
 
     useEffect(() => {
@@ -166,14 +164,14 @@ export default function Admin() {
                                     <tr key={credit.id}>
                                         <td>
                                             {editingCreditId === credit.id ? (
-                                                <input type="text" className="usa-input" value={editCreditFormData?.name} onChange={(e) => setEditCreditFormData({ ...editCreditFormData, name: e.target.value })} />
+                                                <input type="text" className="usa-input" value={editCreditFormData?.name} onChange={(e) => {if(editCreditFormData) {setEditCreditFormData({ ...editCreditFormData, name: e.target.value })}}} />
                                             ) : (
                                                 credit.name
                                             )}
                                         </td>
                                         <td>
                                             {editingCreditId === credit.id ? (
-                                                <input type="number" className="usa-input" value={editCreditFormData?.value} onChange={(e) => setEditCreditFormData({ ...editCreditFormData, value: parseFloat(e.target.value) })} />
+                                                <input type="number" className="usa-input" value={editCreditFormData?.value} onChange={(e) => {if(editCreditFormData) {setEditCreditFormData({ ...editCreditFormData, value: parseFloat(e.target.value) })}}} />
                                             ) : (
                                                 credit.value
                                             )}
@@ -231,14 +229,14 @@ export default function Admin() {
                                     <tr key={deduction.id}>
                                         <td>
                                             {editingDeductionId === deduction.id ? (
-                                                <input type="text" className="usa-input" value={editDeductionFormData?.name} onChange={(e) => setEditDeductionFormData({ ...editDeductionFormData, name: e.target.value })} />
+                                                <input type="text" className="usa-input" value={editDeductionFormData?.name} onChange={(e) => {if(editDeductionFormData) {setEditDeductionFormData({ ...editDeductionFormData, name: e.target.value })}}} />
                                             ) : (
                                                 deduction.name
                                             )}
                                         </td>
                                         <td>
                                             {editingDeductionId === deduction.id ? (
-                                                <input type="number" className="usa-input" value={editDeductionFormData?.rate} onChange={(e) => setEditDeductionFormData({ ...editDeductionFormData, rate: parseFloat(e.target.value) })} />
+                                                <input type="number" className="usa-input" value={editDeductionFormData?.rate} onChange={(e) => {if(editDeductionFormData) {setEditDeductionFormData({ ...editDeductionFormData, rate: parseFloat(e.target.value) })}}} />
                                             ) : (
                                                 deduction.rate
                                             )}

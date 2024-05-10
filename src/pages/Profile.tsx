@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppSelector } from '../store/hooks';
 import { decodeToken } from '../features/user';
 import axios from 'axios'
 
 function Profile() {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // const [password, setPassword] = useState('');
     const token = useAppSelector((state: any) => state.user.token);
     const userData = useAppSelector((state: any) => state.user.userData);
     const userId = useAppSelector((state: any) => state.user.userData.id); // Use the selector
@@ -25,11 +25,12 @@ function Profile() {
         role: userData.role,
     });
     const [editMode, setEditMode] = useState(false);
+    console.log(profile);
 
     useEffect(() => {
         const decoded = decodeToken(token);
         setEmail(decoded.email);
-        setPassword(decoded.password);
+        // setPassword(decoded.password);
     }, [token]);
 
     useEffect(() => {
@@ -83,14 +84,14 @@ function Profile() {
     //     });
     // }, [userData]);
 
-    const handleChange = (e: any) => {
-        const { name, value } = e.target;
-        setProfile(prevProfile => ({
-            ...prevProfile,
-            [name]: value
-        }));
+    // const handleChange = (e: any) => {
+    //     const { name, value } = e.target;
+    //     setProfile(prevProfile => ({
+    //         ...prevProfile,
+    //         [name]: value
+    //     }));
         
-    }
+    // }
     const toggleEditMode = () => {
         handleUpdateUser();
         setEditMode(!editMode);
@@ -132,8 +133,8 @@ function Profile() {
                     <p><strong>Last Name:</strong> {lastName}</p>
                     <p><strong>Address:</strong> {address}</p>
                     <p><strong>Phone Number:</strong> {phoneNumber}</p>
-                    <p><strong>Email:</strong> {email}</p>
-                    <p><strong>Password:</strong> {password}</p>
+                    {/* <p><strong>Email:</strong> {email}</p>
+                    <p><strong>Password:</strong> {password}</p> */}
                     <button type="button" onClick={toggleEditMode}>Edit Profile</button>
                 </div>
             )}

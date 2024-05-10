@@ -1,6 +1,6 @@
 import { Alert, Button, ButtonGroup, Fieldset, Grid, GridContainer, Header, Label, Link, RequiredMarker, Select, StepIndicator, StepIndicatorStep, TextInput, Title } from "@trussworks/react-uswds";
 import React, { useState, useEffect } from 'react';
-import { FormData, W2Info, CreditWithCount, Countable, PersonalInfo, AddressComponent, Deduction, UserDeduction } from '../interfaces/FormData';
+import { FormData, W2Info, CreditWithCount, Countable, AddressComponent, Deduction, UserDeduction } from '../interfaces/FormData';
 import axios from 'axios';
 import { useAppSelector } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
@@ -274,9 +274,8 @@ export default function SubmissionsCreate() {
             console.error('Error submitting tax form', error);
         }
 
-
-        // navigate('/submissions');
-
+        navigate(`/submissions`);
+        window.location.reload();
     };
 
     const addW2 = () => {

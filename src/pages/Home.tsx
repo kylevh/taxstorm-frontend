@@ -9,7 +9,6 @@ import {
   SocialLink,
   SocialLinks,
 } from "@trussworks/react-uswds";
-import circleImg from "/images/logos/circleImg.png";
 import img1 from "/images/icons/group1.png";
 import img2 from "/images/icons/group2.png";
 import img3 from "/images/icons/group3.png";
@@ -19,7 +18,7 @@ import { useTranslation } from "react-i18next";
 
 
 function Home() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const returnToTop = (
     <GridContainer className="usa-footer__return-to-top">

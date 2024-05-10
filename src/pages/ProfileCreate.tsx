@@ -7,7 +7,6 @@ import {
     GridContainer,
     Header,
     Label,
-    MediaBlockBody,
     TextInput,
     Title,
 } from "@trussworks/react-uswds";
