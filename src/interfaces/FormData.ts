@@ -1,6 +1,5 @@
 export interface W2Info {
     employerName?: string;
-    employerID?: string;
     wages?: number;
     federalTaxWithheld?: number;
     stateTaxWithheld?: number;
@@ -8,30 +7,62 @@ export interface W2Info {
     medicareWages?: number;
 }
 
+export interface Deduction extends Value{
+    id?: number,
+    name?: string,
+}
+
+export interface UserDeduction {
+    deductionId?: number,
+    amountSpent?: number,
+}
+
+export interface Value {
+    value: number;
+}
+
+export interface Countable {
+    count: number;
+}
+
+export interface CreditType{
+    id?: number,
+    name?: string,
+    value?: number,
+}
+
+export interface CreditWithCount extends Countable{
+    id?: number,
+    name?: string,
+    value?: number,
+}
+
+export interface Credit {
+    userId?: number,
+    year?: number,
+    creditId?: number,
+    creditsClaimed?: number,
+}
+
+export interface AddressComponent{
+    streetAddress?: string;
+    city?: string;
+    state?: string;
+    zip?: string;
+}
+
+export interface PersonalInfo {
+    firstName: string;
+    lastName: string;
+    addressComponent: AddressComponent;
+    phoneNumber: string;
+    ssn: string;
+}
+
 export interface FormData {
-    personalInfo: {
-        name?: string;
-        ssn?: string; // Social Security Number
-        address?: string;
-        filingStatus?: 'single' | 'married' | 'headOfHousehold';
-    };
+    personalInfo: PersonalInfo;
     w2Info: W2Info[];
-    additionalIncome: {
-        unemployment?: number;
-        interestIncome?: number;
-        dividendIncome?: number;
-    };
-    deductionInfo: {
-        studentLoanInterest?: number;
-        retirementContributions?: number;
-        medicalExpenses?: number;
-        charitableContributions?: number;
-    };
-    taxCredits: {
-        educationCredits?: number;
-        foreignTaxCredit?: number;
-        childTaxCredit?: number;
-        dependentCareExpenses?: number;
-    };
+    deductions: Deduction[];
+    credits: CreditWithCount[];
     summary: {};
 }

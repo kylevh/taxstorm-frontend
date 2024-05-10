@@ -82,7 +82,7 @@ export default function Login() {
 
 
                                             <p className="padding-y-1">
-                                                <Link href="javascript:void();">Forgot password?</Link>
+                                                {/* <Link href="javascript:void();">Forgot password?</Link> */}
                                             </p>
                                         </Fieldset>
                                     </Form>
@@ -90,7 +90,7 @@ export default function Login() {
 
                                 <p className="text-center padding-top-2">
                                     {"Don't have an account? "}
-                                    <Link href="javascript:void();">Create your account now</Link>
+                                    {/* <Link href="javascript:void();">Create your account now</Link> */}
                                     .
                                 </p>
 

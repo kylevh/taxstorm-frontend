@@ -9,13 +9,15 @@ import ProfileCreate from "./pages/ProfileCreate";
 import SubmissionsCreate from "./pages/SubmissionsCreate";
 import SubmissionsView from "./pages/SubmissionsView";
 import Results from "./pages/Results";
+import Debug from "./pages/Debug";
+import Admin from "./pages/Admin";
 import { Navigate } from "react-router-dom";
 import { useAppSelector } from './store/hooks';
 
 function ProtectedRoute({ children }: { children: JSX.Element }) {
-  const isLoggedIn = useAppSelector(state => state.loggedIn.loggedIn);
+  const isLoggedIn = useAppSelector(state => state.user.loggedIn);
   if (!isLoggedIn) {
-      return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace />;
   }
   return children;
 }
@@ -37,8 +39,10 @@ function App() {
           <Route path="/submissions" element={<ProtectedRoute><SubmissionsView /></ProtectedRoute>} />
           <Route path="/submissions/create" element={<ProtectedRoute><SubmissionsCreate /></ProtectedRoute>} />
           <Route path="/submissions/:id/result" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
 
           <Route path="/submissions/result" element={<ProtectedRoute><Results /></ProtectedRoute>} />
+          <Route path="/debug" element={<Debug />} />
         </Routes>
       </AnimatePresence>
     </>

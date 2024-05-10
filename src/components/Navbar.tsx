@@ -25,11 +25,12 @@ function Navbar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch()
   const [isMobileNavExpanded, setIsMobileNavExpanded] = useState(false);
+  const userRole = useAppSelector((state: any) => state.user.userData.role);
   const handleMobileNavToggle = () => {
     setIsMobileNavExpanded(!isMobileNavExpanded);
   };
   const { t, i18n } = useTranslation();
-  const isLoggedIn = useAppSelector((state) => state.loggedIn.loggedIn); // Use the selector
+  const isLoggedIn = useAppSelector((state: any) => state.user.loggedIn); // Use the selector
 
   const handleLanguageChange = (languageCode: any) => {
     console.log("CHANGED LANGUAGE");
@@ -51,6 +52,11 @@ function Navbar() {
         <Link href="/profiles/view">
           <Button type="button">{t('View Profile')}</Button>
         </Link>
+        {userRole === 'ADMIN' && (
+          <Link href="/admin">
+            <Button type="button">{t('Admin')}</Button>
+          </Link>
+        )}
         <Button onClick={handleLogout} type="button">{t('Log out')}</Button>
       </div>
     </>

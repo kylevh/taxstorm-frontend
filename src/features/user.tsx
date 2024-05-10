@@ -16,6 +16,31 @@ interface UserState {
     userData: UserData | null;
 }
 
+interface W2 {
+    id: number;
+    employer: string;
+    year: number;
+    wages: number;
+    federalTaxesWithheld: number;
+    socialSecurityTaxesWithheld: number;
+    medicareTaxesWithheld: number;
+    userId: number;
+    imageKey: string | null;
+}
+
+export interface TaxForm {
+    id: number;
+    user: UserData | null;
+    year: number;
+    totalWages: number;
+    totalFederalTaxesWithheld: number;
+    totalSocialSecurityTaxesWithheld: number;
+    totalMedicareTaxesWithheld: number;
+    credits: number;
+    deductions: number;
+    refund: number;
+}
+
 // const initialState: UserState = {
 //     loggedIn: false,
 //     token: null,
@@ -42,7 +67,13 @@ export const userSlice = createSlice({
     }
 })
 
+export const decodeToken = (token: string) => {
+    const decoded = atob(token); // Decode the Base64 token
+    const [email, password] = decoded.split(':'); // Split the decoded string into email and password
+    return { email, password };
+}
+
 export const { login, logout } = userSlice.actions
-export const selectUser = (state: RootState) => state.loggedIn
+export const selectUser = (state: RootState) => state.user
 export default userSlice.reducer
 

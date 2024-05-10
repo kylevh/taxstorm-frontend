@@ -15,11 +15,15 @@ import img2 from "/images/icons/group2.png";
 import img3 from "/images/icons/group3.png";
 import img4 from "/images/icons/group4.png";
 import logo from "/images/logos/TaxStorm.svg";
+import { useTranslation } from "react-i18next";
+
 
 function Home() {
+  const { t, i18n } = useTranslation();
+
   const returnToTop = (
     <GridContainer className="usa-footer__return-to-top">
-      <a href="#">Return to top</a>
+      <a href="#">{t('Return to top')}</a>
     </GridContainer>
   );
   const socialLinkItems = [
@@ -35,16 +39,16 @@ function Home() {
       size="medium"
       links={[
         <a href="javascript:void(0)" className="usa-footer__primary-link">
-          Home
+          {t('Home')}
         </a>,
         <a href="javascript:void(0)" className="usa-footer__primary-link">
-          Dashboard
+          {t('Dashboard')}
         </a>,
         <a href="javascript:void(0)" className="usa-footer__primary-link">
-          Taxes
+          {t('Taxes')}
         </a>,
         <a href="javascript:void(0)" className="usa-footer__primary-link">
-          Settings
+          {t('Settings')}
         </a>,
       ]}
     />
@@ -64,7 +68,7 @@ function Home() {
           }}
         >
           <SocialLinks links={socialLinkItems} />
-          <h3 className="usa-footer__contact-heading">TaxStorm Help Center</h3>
+          <h3 className="usa-footer__contact-heading">TaxStorm {t('Help Center')}</h3>
           <Address
             size="medium"
             items={[
@@ -89,13 +93,13 @@ function Home() {
             <div className="usa-hero__callout">
               <h1 className="usa-hero__heading">
                 <span className="usa-hero__heading--alt">TaxStorm</span>
-                Do your taxes with ease
+                {t('Do your taxes with ease')}
               </h1>
               <p>
-                Experience the ease of managing your taxes with TaxStorm. Fast, accurate, and secure tax filing at your fingertips.
+                {t('Hero paragraph')}
               </p>
               <a className="usa-button margin-top-2" href="javascript:void(0)">
-                Start Your Stress-Free Tax Journey Now!
+                {t('Start Your Stress-Free Tax Journey Now!')}
               </a>
             </div>
           </GridContainer>
@@ -109,7 +113,7 @@ function Home() {
               }}
             >
               <h2 className="font-heading-xl margin-top-0 tablet:margin-bottom-0">
-                Doing your taxes have never been easier
+                {t('Doing your taxes have never been easier')}
               </h2>
             </Grid>
             <Grid
@@ -119,10 +123,10 @@ function Home() {
               className="usa-prose"
             >
               <p>
-                Our advanced tools guide you through every step of the tax filing process, ensuring you maximize your deductions and credits. Begin your hassle-free tax journey with us today!
+                {t('Our advanced tools guide you through every step of the tax filing process, ensuring you maximize your deductions and credits. Begin your hassle-free tax journey with us today!')}
               </p>
               <p>
-                Create an account or contact us at (800) CALL-TAX to get started.
+                {t('Create an account or contact us at (800) CALL-TAX to get started.')}
               </p>
             </Grid>
           </Grid>
@@ -144,10 +148,10 @@ function Home() {
                 />
                 <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
-                    Efficient Tax Filing
+                    {t('Efficient Tax Filing')}
                   </h2>
                   <p>
-                    Utilize our streamlined process to file your taxes quickly and without errors.
+                    {t('Utilize')}
                   </p>
                 </MediaBlockBody>
               </Grid>
@@ -164,10 +168,10 @@ function Home() {
                 />
                 <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
-                    Maximize Deductions
+                    {t('Maximize')}
                   </h2>
                   <p>
-                    Ensure you get the maximum possible deductions with our expert-driven guidance.
+                    {t('Ensure')}
                   </p>
                 </MediaBlockBody>
               </Grid>
@@ -186,10 +190,10 @@ function Home() {
                 />
                 <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
-                    24/7 Support
+                    {t('24/7 Support')}
                   </h2>
                   <p>
-                    Our tax experts are available around the clock to help you with any questions or issues.
+                    {t('Our tax experts are available around the clock to help you with any questions or issues.')}
                   </p>
                 </MediaBlockBody>
               </Grid>
@@ -206,10 +210,10 @@ function Home() {
                 />
                 <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
-                    Secure and Private
+                    {t('Secure and Private')}
                   </h2>
                   <p>
-                    Your data is protected with top-notch security measures, ensuring your privacy.
+                    {t('Your data is protected with top-notch security measures, ensuring your privacy.')}
                   </p>
                 </MediaBlockBody>
               </Grid>
@@ -219,12 +223,12 @@ function Home() {
 
         <section id="test-section-id" className="usa-section">
           <GridContainer>
-            <h2 className="font-heading-xl margin-y-0 text-bold text-xl pb-4">Ready to File Your Taxes?</h2>
+            <h2 className="font-heading-xl margin-y-0 text-bold text-xl pb-4">{t('Ready to File Your Taxes?')}</h2>
             <p className="usa-intro pb-4">
-            Join thousands of satisfied customers who have experienced the ease and security of filing their taxes with TaxStorm. Get started today and feel the difference.
+            {t('Join thousands of satisfied customers who have experienced the ease and security of filing their taxes with TaxStorm. Get started today and feel the difference.')}
             </p>
             <a href="#" className="usa-button usa-button--big">
-            File with TaxStorm Now
+            {t('File with TaxStorm Now')}
             </a>
           </GridContainer>
         </section>
