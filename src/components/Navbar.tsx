@@ -25,7 +25,7 @@ function Navbar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch()
   const [isMobileNavExpanded, setIsMobileNavExpanded] = useState(false);
-  const userRole = useAppSelector((state: any) => state.user.userData.role);
+  const userRole = useAppSelector((state: any) => state.user.userData ? state.user.userData.role : null);
   const handleMobileNavToggle = () => {
     setIsMobileNavExpanded(!isMobileNavExpanded);
   };
